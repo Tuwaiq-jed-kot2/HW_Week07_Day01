@@ -111,11 +111,10 @@ fun blurBitmap(bitmap: Bitmap, applicationContext: Context): Bitmap {
     lateinit var rsContext: RenderScript
     try {
 
-        // Create the output bitmap
         val output = Bitmap.createBitmap(
                 bitmap.width, bitmap.height, bitmap.config)
 
-        // Blur the image
+
         rsContext = RenderScript.create(applicationContext, RenderScript.ContextType.DEBUG)
         val inAlloc = Allocation.createFromBitmap(rsContext, bitmap)
         val outAlloc = Allocation.createTyped(rsContext, inAlloc.type)
